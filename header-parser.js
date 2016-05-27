@@ -5,9 +5,7 @@ var port = process.env.PORT;
 
 http.createServer(function (request, response){
    
-  if (request.url == "/favicon.ico"){} 
-  
-  else if (request.url == "/"){
+  if (request.url == "/"){
    
    var ip_ = request.headers['x-forwarded-for'];
    var lang = request.headers["accept-language"].slice(0,5);
@@ -26,6 +24,9 @@ http.createServer(function (request, response){
    
    response.writeHead(200, {'Content-Type':'application/json'})
    response.end(JSON.stringify(headerPa))
-  }   
+  }
+  
+  else if (request.url == "/favicon.ico"){};
+
     
 }).listen(port);
